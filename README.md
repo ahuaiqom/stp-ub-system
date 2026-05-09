@@ -1,4 +1,4 @@
-# STP-UB-System Setup Guide (For Team Members)
+# STP-UB-System Setup Guide 
 
 ## 1. Clone Repository
 
