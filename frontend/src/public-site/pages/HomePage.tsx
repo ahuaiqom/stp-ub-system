@@ -3,7 +3,7 @@ import "./HomePage.css";
 import Navbar from "../components/Navbar/Navbar";
 import Hero from "../components/Hero/Hero";
 import Activity from "../components/Activity/Activity";
-
+import Activity2 from "../components/Activity/Activity2";
 import {
   heroData,
   navItems,
@@ -23,7 +23,7 @@ const HomePage = () => {
       />
 
       <Activity />
-
+      <Activity2 />
     </div>
   );
 };
