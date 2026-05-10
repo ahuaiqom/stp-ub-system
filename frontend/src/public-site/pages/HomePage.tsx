@@ -4,6 +4,8 @@ import Navbar from "../components/Navbar/Navbar";
 import Hero from "../components/Hero/Hero";
 import Activity from "../components/Activity/Activity";
 import Activity2 from "../components/Activity/Activity2";
+import HarvestTable from "../components/HarvestTable/HarvestTable";
+
 import {
   heroData,
   navItems,
@@ -24,6 +26,7 @@ const HomePage = () => {
 
       <Activity />
       <Activity2 />
+      <HarvestTable />
     </div>
   );
 };
