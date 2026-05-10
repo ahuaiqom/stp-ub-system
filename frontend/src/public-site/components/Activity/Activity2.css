@@ -1,0 +1,224 @@
+.activity2-section {
+  width: 100%;
+  padding: 40px 0 80px;
+  background: #ddd8c5;
+  overflow: hidden;
+}
+
+.activity2-slider-wrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.activity2-slider {
+  display: flex;
+  gap: 34px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  padding: 0 8vw;
+  width: 100%;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  transition: transform 0.6s ease-in-out;
+  cursor: grab;
+}
+
+.activity2-slider:active {
+  cursor: grabbing;
+}
+
+.activity2-slider::-webkit-scrollbar {
+  display: none;
+}
+
+.activity2-card {
+  position: relative;
+  flex-shrink: 0;
+  border-radius: 24px;
+  overflow: hidden;
+  scroll-snap-align: center;
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.activity2-card:hover {
+  transform: scale(1.015);
+}
+
+.activity2-card.featured {
+  width: 1083px;
+  height: 679px;
+}
+
+.activity2-card.side {
+  width: 928px;
+  height: 593px;
+  margin-top: 43px;
+}
+
+.activity2-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.activity2-overlay {
+  position: absolute;
+  inset: 0;
+}
+
+.activity2-content {
+  position: absolute;
+  left: 48px;
+  bottom: 52px;
+  color: #E8DFCA;
+  z-index: 2;
+  max-width: 72%;
+}
+
+.activity2-card.featured h3 {
+  font-size: 40px;
+  font-weight: 700;
+  margin-bottom: 18px;
+}
+
+.activity2-card.side h3 {
+  font-size: 46px;
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+
+.activity2-content p {
+  font-size: 24px;
+  line-height: 1.5;
+}
+
+.activity2-navigation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 22px;
+  margin-top: 42px;
+}
+
+.activity2-dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+}
+
+.activity2-dots .dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(29, 92, 49, 0.25);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.activity2-dots .dot.active {
+  width: 22px;
+  height: 22px;
+  background: #1A4D2E;
+}
+
+.activity2-arrow-bottom {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(29, 92, 49, 0.92);
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  padding: 0;
+  line-height: 1;
+}
+
+.activity2-arrow-bottom:hover {
+  background: #1A4D2E;
+  transform: scale(1.08);
+}
+
+/* Hapus arrow lama */
+.activity2-arrow,
+.activity2-arrow.left,
+.activity2-arrow.right {
+  display: none;
+}
+
+/* Responsive */
+@media (max-width: 1600px) {
+  .activity2-card.featured {
+    width: 85vw;
+    height: calc(85vw * 0.627);
+    max-width: 1083px;
+    max-height: 679px;
+  }
+
+  .activity2-card.side {
+    width: 73vw;
+    height: calc(73vw * 0.639);
+    max-width: 928px;
+    max-height: 593px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .activity2-card.featured,
+  .activity2-card.side {
+    width: 88vw;
+    height: auto;
+    aspect-ratio: 16 / 10;
+    margin-top: 0;
+  }
+
+  .activity2-content {
+    left: 24px;
+    bottom: 28px;
+    max-width: 85%;
+  }
+
+  .activity2-content h3 {
+    font-size: 32px !important;
+  }
+
+  .activity2-content p {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 768px) {
+  .activity2-section {
+    padding: 40px 0 60px;
+  }
+
+  .activity2-navigation {
+    gap: 14px;
+    margin-top: 30px;
+  }
+
+  .activity2-arrow-bottom {
+    width: 32px;
+    height: 32px;
+    font-size: 18px;
+  }
+
+  .activity2-content h3 {
+    font-size: 26px !important;
+  }
+
+  .activity2-content p {
+    font-size: 16px;
+  }
+}
