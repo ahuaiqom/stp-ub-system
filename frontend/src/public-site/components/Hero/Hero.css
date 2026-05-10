@@ -1,0 +1,175 @@
+.hero-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  gap: 64px;
+
+  margin-top: 28px;
+}
+
+/* ========================= */
+/* LEFT */
+/* ========================= */
+
+.hero-left {
+  flex: 1;
+
+  padding-top: 120px;
+}
+
+.hero-left h1 {
+  font-size: clamp(52px, 7vw, 92px);
+
+  line-height: 0.95;
+
+  color: #4f6f52;
+
+  font-weight: 700;
+
+  letter-spacing: -3px;
+}
+
+.hero-left p {
+  margin-top: 26px;
+
+  color: #4f6f52;
+
+  line-height: 1.7;
+
+  max-width: 620px;
+
+  font-size: 18px;
+}
+
+.explore-btn {
+  margin-top: 52px;
+
+  background: #1f5c32;
+
+  color: white;
+
+  border: none;
+
+  padding: 18px 30px;
+
+  border-radius: 14px;
+
+  cursor: pointer;
+
+  font-size: 18px;
+
+  transition: 0.3s;
+}
+
+.explore-btn:hover {
+  transform: translateY(-2px);
+}
+
+/* ========================= */
+/* GALLERY */
+/* ========================= */
+
+.hero-gallery {
+  flex: 1.1;
+
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 18px;
+
+  align-items: start;
+
+  position: relative;
+}
+
+/* semua gambar */
+.hero-gallery img {
+  width: 100%;
+
+  height: auto;
+
+  display: block;
+
+  object-fit: cover;
+
+  border-radius: 20px;
+}
+
+/* ========================= */
+/* IMAGE SIZE */
+/* ========================= */
+
+.deer {
+  aspect-ratio: 4 / 3;
+}
+
+.farm {
+  aspect-ratio: 4 / 5;
+
+  transform: translateY(clamp(-390px, -11vw, -90px));
+}
+
+.greenhouse {
+  aspect-ratio: 4 / 5;
+}
+
+.peacock {
+  aspect-ratio: 16 / 9;
+
+  margin-top: 20px;
+}
+
+/* ========================= */
+/* RESPONSIVE */
+/* ========================= */
+
+@media (max-width: 1100px) {
+  .hero-section {
+    flex-direction: column;
+
+    gap: 50px;
+  }
+
+  .hero-left {
+    width: 100%;
+
+    padding-top: 60px;
+  }
+
+  .hero-gallery {
+    width: 100%;
+  }
+
+  .farm {
+    margin-top: 0;
+  }
+}
+@media (max-width: 768px) {
+  .farm {
+    transform: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-gallery img {
+    aspect-ratio: 16 / 10 !important;
+  }
+
+  .hero-left h1 {
+    font-size: 52px;
+  }
+
+  .hero-left p {
+    font-size: 16px;
+  }
+
+  .explore-btn {
+    width: 100%;
+  }
+}

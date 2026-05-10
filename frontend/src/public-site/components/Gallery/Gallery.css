@@ -1,0 +1,63 @@
+.hero-gallery {
+  width: 100%;
+  max-width: 720px;
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 16px;
+
+  align-items: start;
+}
+
+/* semua gambar */
+.hero-gallery img {
+  width: 100%;
+  display: block;
+
+  object-fit: cover;
+  border-radius: 18px;
+}
+
+/* gambar rusa */
+.img-small {
+  height: 220px;
+}
+
+/* gambar farm */
+.img-large {
+  height: 420px;
+
+  /* NAIKKAN sedikit */
+  margin-top: -40px;
+}
+
+/* gambar bawah */
+.img-tall {
+  height: 320px;
+}
+
+/* tablet */
+@media (max-width: 1024px) {
+  .hero-gallery {
+    max-width: 100%;
+  }
+
+  .img-large {
+    margin-top: 0;
+  }
+}
+
+/* mobile */
+@media (max-width: 768px) {
+  .hero-gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .img-small,
+  .img-large,
+  .img-tall {
+    height: 260px;
+    margin-top: 0;
+  }
+}
