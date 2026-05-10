@@ -3,111 +3,24 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 html,
 body {
   overflow-x: hidden;
   width: 100%;
+  scroll-behavior: smooth;
 }
 
 .homepage {
   width: 100%;
   min-height: 100vh;
-
-    padding: 120px 42px 26px;
+  padding: 120px 42px 26px;
   box-sizing: border-box;
-
   background: #ddd8c5;
-
   font-family: 'Outfit', sans-serif;
-
   overflow-x: hidden;
+}
+
+
   
-}
-
-/* ========================= */
-/* ACTIVITY SECTION */
-/* ========================= */
-
-.activity-section {
-  margin-top: 120px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: relative;
-}
-
-.activity-content {
-  width: 40%;
-  text-align: center;
-}
-
-.activity-content h2 {
-  font-size: 72px;
-  line-height: 1.1;
-  color: #4f6f52;
-  font-weight: 700;
-}
-
-.activity-content p {
-  margin-top: 24px;
-  color: #4f6f52;
-  line-height: 1.8;
-  font-size: 16px;
-}
-
-/* floating images */
-
-.activity-images {
-  width: 25%;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 14px;
-}
-
-.activity-images img {
-  width: 140px;
-  height: 80px;
-  object-fit: cover;
-  border-radius: 16px;
-  transition: 0.3s;
-}
-
-.activity-images img:hover {
-  transform: translateY(-5px);
-}
-
-.activity-images.left {
-  justify-content: flex-start;
-}
-
-.activity-images.right {
-  justify-content: flex-end;
-}
-
-/* ========================= */
-/* RESPONSIVE */
-/* ========================= */
-
-@media (max-width: 1024px) {
-  .homepage {
-    padding: 20px;
-  }
-
-  .activity-section {
-    flex-direction: column;
-    gap: 40px;
-  }
-
-  .activity-content {
-    width: 100%;
-  }
-
-  .activity-content h2 {
-    font-size: 42px;
-  }
-
-  .activity-images {
-    width: 100%;
-    justify-content: center;
-  }
-}
+  
