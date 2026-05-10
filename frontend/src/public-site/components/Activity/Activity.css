@@ -7,7 +7,7 @@
   width: 100%;
   min-height: 560px;
 
-  margin-top: -40px;
+  margin-top: -180px;
 
   display: flex;
   justify-content: center;
@@ -23,7 +23,7 @@
 /* ========================= */
 
 .activity-content {
-  width: min(760px, 100%);
+  width: min(980, 100%);
   text-align: center;
   z-index: 2;
 
@@ -33,12 +33,12 @@
 }
 
 .activity-content h2 {
-  font-size: clamp(42px, 7vw, 92px);
-  line-height: 1.08;
+  font-size: clamp(42px, 7vw, 88px);
+  line-height: 1.12;
   color: #557553;
   font-weight: 700;
   letter-spacing: -3px;
-
+  white-space: nowrap;
   transition: all 0.4s ease;
 }
 
