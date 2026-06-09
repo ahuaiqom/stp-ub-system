@@ -1,0 +1,147 @@
+/**
+ * Shared visual style for the public-site data tables
+ * (Pertanian, Peternakan, Akademik). Matches the green/cream
+ * design used in HarvestTable.
+ */
+
+.public-table-section {
+  width: 100%;
+  padding: 60px 48px 90px;
+  background: #ddd8c5;
+}
+
+.public-table-container {
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+.public-table-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: #1A4D2E;
+  margin-bottom: 22px;
+}
+
+.public-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  border-radius: 18px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+  background: #d8d0bb;
+}
+
+.public-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 900px;
+}
+
+.public-table thead th.group-header {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.public-table thead {
+  background: #165c31;
+}
+
+.public-table th {
+  color: #E8DFCA;
+  font-size: 18px;
+  font-weight: 700;
+  padding: 22px 18px;
+  text-align: center;
+  border-right: 1px solid rgba(255, 255, 255, 0.15);
+  vertical-align: middle;
+}
+
+.public-table th:last-child { border-right: none; }
+
+.public-table td {
+  font-size: 17px;
+  font-weight: 600;
+  color: #1A4D2E;
+  padding: 28px 22px;
+  border: 1px solid rgba(26, 77, 46, 0.12);
+  text-align: left;
+  vertical-align: middle;
+}
+
+.public-table td.center,
+.public-table th.center {
+  text-align: center;
+}
+
+.public-table tbody tr { background: #d8d0bb; }
+.public-table tbody tr.is-empty td { background: transparent; min-height: 60px; }
+.public-table tbody tr:hover:not(.is-empty) {
+  background: rgba(26, 77, 46, 0.03);
+}
+
+.public-table-state {
+  padding: 24px;
+  text-align: center;
+  font-weight: 600;
+  color: #1A4D2E;
+}
+
+.public-table-state.error { color: #a14132; }
+
+.public-table-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+  margin-top: 32px;
+}
+
+.public-table-arrow {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: none;
+  background: #165c31;
+  color: #E8DFCA;
+  font-size: 22px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease, background 0.2s ease, opacity 0.2s ease;
+}
+
+.public-table-arrow:hover:not(:disabled) {
+  transform: scale(1.08);
+  background: #1A4D2E;
+}
+
+.public-table-arrow:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.public-table-page {
+  width: 58px;
+  height: 52px;
+  border-radius: 14px;
+  border: none;
+  background: #E8DFCA;
+  color: #1A4D2E;
+  font-size: 22px;
+  font-weight: 700;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+}
+
+@media (max-width: 1024px) {
+  .public-table-title { font-size: 26px; }
+  .public-table-section { padding: 40px 24px 70px; }
+  .public-table th,
+  .public-table td { font-size: 15px; padding: 20px 14px; }
+}
+
+@media (max-width: 768px) {
+  .public-table-title { font-size: 22px; }
+  .public-table-pagination { gap: 12px; }
+  .public-table-arrow { width: 34px; height: 34px; }
+  .public-table-page { width: 48px; height: 44px; font-size: 18px; }
+}

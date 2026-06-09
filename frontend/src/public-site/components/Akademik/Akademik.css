@@ -1,0 +1,55 @@
+.akademik-section {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr 1fr;
+  align-items: center;
+  gap: 24px;
+  padding: 50px 24px 30px;
+}
+
+.akademik-content {
+  text-align: center;
+}
+
+.akademik-content h2 {
+  font-size: clamp(42px, 6.4vw, 78px);
+  line-height: 1.05;
+  color: #4f6f52;
+  font-weight: 700;
+  letter-spacing: -2px;
+  margin: 0;
+}
+
+.akademik-content p {
+  margin-top: 16px;
+  font-size: clamp(15px, 1.4vw, 17px);
+  line-height: 1.55;
+  color: #4f6f52;
+  max-width: 460px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.akademik-photo img {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  border-radius: 18px;
+  display: block;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+}
+
+.akademik-photo-left img {
+  border-radius: 18px;
+}
+
+.akademik-photo-right img {
+  border-radius: 18px;
+}
+
+@media (max-width: 900px) {
+  .akademik-section {
+    grid-template-columns: 1fr;
+  }
+  .akademik-photo img { height: 220px; }
+  .akademik-photo-left, .akademik-photo-right { max-width: 80%; margin: 0 auto; }
+}
