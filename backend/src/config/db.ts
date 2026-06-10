@@ -1,7 +1,10 @@
 import { Pool } from "pg";
 import dotenv from "dotenv";
+import path from "path";
 
-dotenv.config();
+dotenv.config({
+  path: path.resolve(__dirname, "../../.env"),
+});
 
 export const pool = new Pool({
   user: process.env.DB_USER,
@@ -11,10 +14,7 @@ export const pool = new Pool({
   port: Number(process.env.DB_PORT),
 });
 
-pool.connect()
-  .then(() => {
-    console.log("✅ PostgreSQL Connected");
-  })
-  .catch((err) => {
-    console.error("❌ Database connection error:", err);
-  });
+export async function ensureDbConnected() {
+  await pool.query("SELECT 1");
+  console.log("✅ PostgreSQL connected");
+}
