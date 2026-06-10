@@ -1,0 +1,26 @@
+.konservasi-tabs {
+  display: flex;
+  background: transparent;
+  border-bottom: 1px solid rgba(26, 77, 46, 0.12);
+}
+
+.konservasi-tabs .tab {
+  flex: 1;
+  background: transparent;
+  border: none;
+  padding: 16px 12px;
+  font-family: inherit;
+  font-size: 17px;
+  font-weight: 700;
+  color: rgba(26, 77, 46, 0.45);
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.konservasi-tabs .tab:hover { color: #1A4D2E; }
+
+.konservasi-tabs .tab.active {
+  color: #1A4D2E;
+  border-bottom-color: #165c31;
+}

@@ -1,0 +1,141 @@
+import { useState } from "react";
+import DashboardCard from "../components/DashboardCard";
+import DataTable, { type ColumnDef } from "../components/DataTable";
+import RowFormModal, { type FormFieldDef, type FormValues } from "../components/RowFormModal";
+import ConfirmModal from "../components/ConfirmModal";
+import { useAdminTable, getCol } from "../hooks/useAdminTable";
+import { useAuth } from "../context/AuthContext";
+import {
+  insertRow,
+  updateRow,
+  deleteRow,
+  type TableRow,
+} from "../../services/admin.api";
+
+const PATH = "/peternakan/items";
+
+const FIELDS: FormFieldDef[] = [
+  { colIdx: 0, key: "komoditas",        label: "Komoditas",         type: "text", required: true, full: true },
+  { colIdx: 1, key: "luas_usaha",       label: "Luas Usaha (m2)",   type: "number" },
+  { colIdx: 2, key: "siklus_bulan",     label: "Satuan Bulan",      type: "number" },
+  { colIdx: 3, key: "siklus_per_tahun", label: "Per-Tahun (kali)",  type: "number" },
+  { colIdx: 4, key: "jumlah",           label: "Jumlah",            type: "number" },
+  { colIdx: 5, key: "satuan",           label: "Satuan",            type: "text" },
+  { colIdx: 6, key: "keterangan",       label: "Keterangan",        type: "textarea", full: true },
+];
+
+const buildPayload = (v: FormValues) =>
+  FIELDS.map((f) => {
+    let value: unknown = v[f.key];
+    if (f.type === "number") value = Number(value) || 0;
+    if (f.key === "keterangan" && !value) value = null;
+    return { colIdx: f.colIdx, value };
+  });
+
+const formFromRow = (row: TableRow): FormValues => {
+  const out: FormValues = {};
+  for (const f of FIELDS) {
+    const v = getCol(row, f.colIdx);
+    out[f.key] = (v as string | number | null) ?? "";
+  }
+  return out;
+};
+
+const PeternakanPage = () => {
+  const { token } = useAuth();
+  const t = useAdminTable(PATH);
+
+  const [editRow, setEditRow] = useState<TableRow | null>(null);
+  const [showAdd, setShowAdd] = useState(false);
+  const [confirm, setConfirm] = useState<TableRow | null>(null);
+  const [busy, setBusy] = useState(false);
+
+  const columns: ColumnDef<TableRow>[] = [
+    { key: "komoditas", label: "Komoditas", render: (r) => String(getCol(r, 0) ?? "") },
+    { key: "luas_usaha", label: "Luas Usaha (m2)", align: "center", render: (r) => String(getCol(r, 1) ?? "") },
+    { key: "siklus_bulan", label: "Satuan Bulan", align: "center", render: (r) => String(getCol(r, 2) ?? "") },
+    { key: "siklus_per_tahun", label: "Per-Tahun (kali)", align: "center", render: (r) => String(getCol(r, 3) ?? "") },
+    { key: "jumlah", label: "Jumlah", align: "center", render: (r) => String(getCol(r, 4) ?? "") },
+    { key: "satuan", label: "Satuan", align: "center", render: (r) => String(getCol(r, 5) ?? "") },
+    { key: "keterangan", label: "Keterangan", render: (r) => String(getCol(r, 6) ?? "") },
+  ];
+
+  const handleAdd = async (v: FormValues) => {
+    if (!token) return;
+    await insertRow(PATH, buildPayload(v), token);
+    t.reload();
+  };
+
+  const handleEdit = async (v: FormValues) => {
+    if (!token || !editRow) return;
+    await updateRow(PATH, editRow.rowId, buildPayload(v), token);
+    t.reload();
+  };
+
+  const handleDelete = async () => {
+    if (!token || !confirm) return;
+    setBusy(true);
+    try {
+      await deleteRow(PATH, confirm.rowId, token);
+      setConfirm(null);
+      t.reload();
+    } finally {
+      setBusy(false);
+    }
+  };
+
+  return (
+    <>
+      <DashboardCard
+        title="Dashboard Peternakan"
+        description="Proyeksi Panen Komoditas Peternakan"
+        onAdd={() => setShowAdd(true)}
+      />
+
+      <DataTable
+        title="Tabel Peternakan"
+        columns={columns}
+        rows={t.rows}
+        loading={t.loading}
+        error={t.error}
+        search={t.search}
+        onSearchChange={t.setSearch}
+        searchPlaceholder="Cari komoditas"
+        page={t.page}
+        hasNext={t.hasNext}
+        onPrev={t.prev}
+        onNext={t.next}
+        onEdit={(r) => setEditRow(r)}
+        onDelete={(r) => setConfirm(r)}
+      />
+
+      <RowFormModal
+        open={showAdd}
+        title="Tambah Data Peternakan"
+        fields={FIELDS}
+        onClose={() => setShowAdd(false)}
+        onSubmit={handleAdd}
+      />
+
+      <RowFormModal
+        open={!!editRow}
+        title="Edit Data Peternakan"
+        fields={FIELDS}
+        initialValues={editRow ? formFromRow(editRow) : undefined}
+        onClose={() => setEditRow(null)}
+        onSubmit={handleEdit}
+      />
+
+      <ConfirmModal
+        open={!!confirm}
+        title="Hapus Data"
+        message={`Hapus data komoditas "${confirm ? String(getCol(confirm, 0) ?? "") : ""}"?`}
+        onConfirm={handleDelete}
+        onCancel={() => setConfirm(null)}
+        busy={busy}
+      />
+    </>
+  );
+};
+
+export default PeternakanPage;

@@ -1,0 +1,140 @@
+/**
+ * Split-screen login: cream form panel (left) + full-bleed photo (right).
+ * On narrow viewports the photo collapses and the form fills the screen.
+ */
+
+.login-shell {
+  min-height: 100vh;
+  width: 100%;
+  display: grid;
+  grid-template-columns: minmax(360px, 38%) 1fr;
+  background: #ddd8c5;
+  font-family: 'Outfit', sans-serif;
+  color: #1A4D2E;
+}
+
+/* ------- Left panel ------- */
+.login-pane {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 56px;
+  background: #ECE5CB;
+}
+
+.login-form-wrap {
+  width: 100%;
+  max-width: 360px;
+}
+
+.login-heading {
+  text-align: center;
+  margin-bottom: 38px;
+}
+
+.login-heading h1 {
+  font-size: 34px;
+  font-weight: 700;
+  margin: 0;
+  color: #1A4D2E;
+}
+
+.login-heading p {
+  margin-top: 6px;
+  color: #6c7a6a;
+  font-size: 15px;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.login-field label {
+  display: block;
+  font-size: 15px;
+  font-weight: 600;
+  color: #1A4D2E;
+  margin-bottom: 8px;
+}
+
+.login-field input {
+  width: 100%;
+  padding: 12px 14px;
+  background: #d8d0bb;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  color: #1A4D2E;
+  font-family: inherit;
+  outline: none;
+  transition: box-shadow 0.15s;
+}
+
+.login-field input:focus {
+  box-shadow: 0 0 0 2px #165c31;
+}
+
+.login-error {
+  background: rgba(177, 59, 43, 0.08);
+  color: #b13b2b;
+  padding: 10px 12px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.login-submit {
+  margin-top: 14px;
+  padding: 13px 16px;
+  border: none;
+  border-radius: 10px;
+  background: #245c39;
+  color: #ECE5CB;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.15s;
+  font-family: inherit;
+}
+
+.login-submit:hover:not(:disabled) {
+  background: #1A4D2E;
+}
+
+.login-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ------- Right photo ------- */
+.login-photo {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  background-color: #1A4D2E; /* fallback while image loads */
+}
+
+/* ------- Responsive ------- */
+@media (max-width: 880px) {
+  .login-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .login-photo {
+    display: none;
+  }
+
+  .login-pane {
+    padding: 60px 24px;
+    background: #ddd8c5;
+  }
+
+  .login-form-wrap {
+    background: #ECE5CB;
+    padding: 36px 28px;
+    border-radius: 18px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+  }
+}
